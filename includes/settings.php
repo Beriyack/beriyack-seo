@@ -69,7 +69,7 @@ function beriyack_seo_admin_enqueue_scripts( $hook ) {
 		'beriyack-seo-admin-script',
 		plugin_dir_url( dirname( __DIR__ ) ) . 'assets/js/admin.js',
 		array( 'jquery' ),
-		'1.0.0', // La version de votre plugin ou du script.
+		BERIYACK_SEO_VERSION,
 		true     // Charger dans le pied de page.
 	);
 

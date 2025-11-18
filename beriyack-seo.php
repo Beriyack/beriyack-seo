@@ -18,6 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+// Définit la version du plugin comme une constante pour une utilisation centralisée.
+define( 'BERIYACK_SEO_VERSION', '1.0.2' );
+
 // Initialise les réglages du plugin.
 require_once plugin_dir_path( __FILE__ ) . 'includes/settings.php';
 
