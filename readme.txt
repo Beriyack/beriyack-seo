@@ -4,7 +4,7 @@ Donate link: https://www.buymeacoffee.com/beriyack
 Tags: seo, meta, open graph, sitemap, robots
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -57,6 +57,12 @@ Ce plugin ne collecte et ne stocke aucune donnée personnelle des visiteurs de v
 1. La page de réglages simple et claire du plugin.
 
 == Changelog ==
+
+= 1.0.2 =
+* Sécurité : Renforcement de la sanitization de `$_SERVER['REQUEST_URI']` pour satisfaire l'analyse statique.
+
+= 1.0.1 =
+* Correction : Résolution des avertissements et erreurs du Plugin Check de WordPress.org (sécurité, standards de code, nombre de tags).
 
 = 1.0.0 =
 * Lancement initial du plugin.
