@@ -10,7 +10,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       beriyack-seo
  * Requires at least: 5.0
- * Tested up to:      6.5
+ * Tested up to:      6.8
  * Requires PHP:      7.4
  */
 
@@ -50,7 +50,7 @@ function beriyack_seo_add_meta_tags() {
 		$post        = get_queried_object();
 		$type        = 'article';
 		$url         = get_permalink( $post );
-		$description = strip_tags( get_the_excerpt( $post ) );
+		$description = wp_strip_all_tags( get_the_excerpt( $post ) );
 		$author_name = get_the_author_meta( 'display_name', $post->post_author ); // Auteur de l'article.
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$image_url = get_the_post_thumbnail_url( $post->ID, 'large' ); // 'large' est souvent un meilleur compromis que 'full'.
@@ -84,7 +84,8 @@ function beriyack_seo_add_meta_tags() {
 		$url         = get_search_link( $search_query );
 	} elseif ( is_404() ) {
 		$description = esc_html__( 'La page que vous recherchez semble introuvable.', 'beriyack-seo' );
-		$url         = home_url( $_SERVER['REQUEST_URI'] );
+		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
+		$url         = home_url( esc_url_raw( $request_uri ) );
 		$type        = 'website';
 	}
 
@@ -166,5 +167,5 @@ function beriyack_seo_add_settings_link( $links ) {
 }
 
 // On s'assure que le nom du fichier est correct pour le hook.
-$plugin_basename = plugin_basename( __FILE__ );
-add_filter( "plugin_action_links_{$plugin_basename}", 'beriyack_seo_add_settings_link' );
+$beriyack_seo_plugin_basename = plugin_basename( __FILE__ );
+add_filter( "plugin_action_links_{$beriyack_seo_plugin_basename}", 'beriyack_seo_add_settings_link' );

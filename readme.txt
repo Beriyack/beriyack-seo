@@ -1,9 +1,9 @@
 === Beriyack SEO ===
 Contributors: beriyack
 Donate link: https://www.buymeacoffee.com/beriyack
-Tags: seo, meta, open graph, twitter cards, sitemap, robots, noindex
+Tags: seo, meta, open graph, sitemap, robots
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.8
 Stable tag: 1.0.0
 Requires PHP: 7.4
 License: GPLv3 or later
