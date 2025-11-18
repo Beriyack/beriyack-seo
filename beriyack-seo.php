@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Beriyack SEO
  * Description:       Plugin SEO de base pour le site Beriyack. Gère les optimisations techniques : balises meta, intégration du sitemap et directives d'indexation.
- * Version:           1.0.0
+ * Version:           1.0.2
  * Plugin URI:        https://github.com/Beriyack/beriyack-seo
  * Author:            Beriyack
  * Author URI:        https://x.com/Beriyack
@@ -84,8 +84,7 @@ function beriyack_seo_add_meta_tags() {
 		$url         = get_search_link( $search_query );
 	} elseif ( is_404() ) {
 		$description = esc_html__( 'La page que vous recherchez semble introuvable.', 'beriyack-seo' );
-		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
-		$url         = home_url( esc_url_raw( $request_uri ) );
+		$url         = home_url( isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '' );
 		$type        = 'website';
 	}
 
