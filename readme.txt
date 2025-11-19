@@ -4,7 +4,7 @@ Donate link: https://www.buymeacoffee.com/beriyack
 Tags: seo, meta, open graph, sitemap, robots
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -57,6 +57,15 @@ Ce plugin ne collecte et ne stocke aucune donnée personnelle des visiteurs de v
 1. La page de réglages simple et claire du plugin.
 
 == Changelog ==
+
+= 1.1.0 =
+* Amélioration : La logique de génération de la description est maintenant plus robuste et couvre tous les cas (pages vides, archives sans description, etc.).
+* Amélioration : Simplification du code en utilisant `get_the_excerpt()` pour la description des articles.
+* Correction : Le bouton de téléversement d'image dans les réglages fonctionne désormais correctement.
+* Correction : Les balises meta s'affichent maintenant de manière fiable, même si certaines informations (comme le slogan) sont manquantes.
+* Correction : La balise `author` est maintenant indépendante de la balise `description`.
+* Correction : Le HTML est correctement retiré des descriptions de catégories.
+* Correction : Utilisation de la syntaxe moderne pour `term_description()` afin de supprimer l'avertissement de paramètre déprécié.
 
 = 1.0.2 =
 * Sécurité : Renforcement de la sanitization de `$_SERVER['REQUEST_URI']` pour satisfaire l'analyse statique.

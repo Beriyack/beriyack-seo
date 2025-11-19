@@ -67,7 +67,7 @@ function beriyack_seo_admin_enqueue_scripts( $hook ) {
 	// Enregistre et charge notre script d'administration.
 	wp_enqueue_script(
 		'beriyack-seo-admin-script',
-		plugin_dir_url( dirname( __DIR__ ) ) . 'assets/js/admin.js',
+		plugin_dir_url( __FILE__ ) . '../assets/js/admin.js',
 		array( 'jquery' ),
 		BERIYACK_SEO_VERSION,
 		true     // Charger dans le pied de page.

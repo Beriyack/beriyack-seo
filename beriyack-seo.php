@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Beriyack SEO
  * Description:       Plugin SEO de base pour le site Beriyack. Gère les optimisations techniques : balises meta, intégration du sitemap et directives d'indexation.
- * Version:           1.0.2
+ * Version:           1.1.0
  * Plugin URI:        https://github.com/Beriyack/beriyack-seo
  * Author:            Beriyack
  * Author URI:        https://x.com/Beriyack
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Définit la version du plugin comme une constante pour une utilisation centralisée.
-define( 'BERIYACK_SEO_VERSION', '1.0.2' );
+define( 'BERIYACK_SEO_VERSION', '1.1.0' );
 
 // Initialise les réglages du plugin.
 require_once plugin_dir_path( __FILE__ ) . 'includes/settings.php';
@@ -32,7 +32,8 @@ function beriyack_seo_add_meta_tags() {
 	// Utilise la méthode moderne de WordPress pour récupérer le titre final de la page.
 	// Cela garantit la cohérence avec la balise <title> et les autres plugins SEO.
 	$title       = wp_get_document_title();
-	$description = '';
+	$site_description = get_bloginfo( 'description', 'display' );
+	$description = $site_description; // On initialise avec le slogan comme valeur par défaut.
 	$url         = '';
 
 	// Logique d'image hiérarchique : Image mise en avant > Image par défaut du plugin.
@@ -43,7 +44,10 @@ function beriyack_seo_add_meta_tags() {
 	$type        = 'website';
 
 	if ( is_front_page() ) {
-		$description = get_bloginfo( 'description', 'display' );
+		if ( empty( $description ) ) {
+			/* translators: %s: Site name. */
+			$description = sprintf( esc_html__( 'Bienvenue sur %s. Découvrez nos derniers contenus et actualités.', 'beriyack-seo' ), get_bloginfo( 'name' ) );
+		}
 		$url         = home_url( '/' );
 	} elseif ( is_home() ) {
 		/* translators: %s: Site name. */
@@ -53,19 +57,25 @@ function beriyack_seo_add_meta_tags() {
 		$post        = get_queried_object();
 		$type        = 'article';
 		$url         = get_permalink( $post );
-		$description = wp_strip_all_tags( get_the_excerpt( $post ) );
+		// get_the_excerpt() gère nativement la priorité (extrait manuel > extrait auto).
+		$description = get_the_excerpt( $post );
+
+		$description = wp_strip_all_tags( $description );
 		$author_name = get_the_author_meta( 'display_name', $post->post_author ); // Auteur de l'article.
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$image_url = get_the_post_thumbnail_url( $post->ID, 'large' ); // 'large' est souvent un meilleur compromis que 'full'.
 			$image_alt = get_post_meta( get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true );
-		} elseif ( ! $image_url ) {
-			// Si aucune image mise en avant et aucune image par défaut, on ne met pas de balise image.
 		}
 	} elseif ( is_category() || is_tag() || is_tax() ) {
 		$term        = get_queried_object();
 		$url         = get_term_link( $term );
-		$description = term_description( $term->term_id );
-		// Ajoute un lien vers le sitemap des taxonomies pour un meilleur SEO
+		$description = term_description( $term );
+		if ( empty( $description ) ) {
+			/* translators: %s: Nom de la catégorie, de l'étiquette ou de la taxonomie. */
+			$description = sprintf( esc_html__( 'Retrouvez tous les contenus liés à %s.', 'beriyack-seo' ), $term->name );
+		}
+		$description = wp_strip_all_tags( $description );
+		// Ajoute un lien vers le sitemap des taxonomies pour un meilleur SEO.
 		if ( function_exists( 'wp_get_sitemap_providers' ) ) {
 			$sitemap_url = get_sitemap_url( $term->taxonomy );
 			if ( $sitemap_url ) {
@@ -73,7 +83,6 @@ function beriyack_seo_add_meta_tags() {
 			}
 		}
 	} elseif ( is_post_type_archive( 'post' ) ) {
-		$description = get_bloginfo( 'description' );
 		$url         = get_post_type_archive_link( 'post' );
 		$type        = 'website';
 	} elseif ( is_author() ) {
@@ -91,39 +100,39 @@ function beriyack_seo_add_meta_tags() {
 		$type        = 'website';
 	}
 
-	// Nettoyage de la description
+	// Nettoyage et solution de repli pour la description.
 	$description = trim( preg_replace( '/\s+/', ' ', $description ) );
+	
+	echo '<meta name="author" content="' . esc_attr( $author_name ) . '" />' . "\n";
+	// Balises Open Graph (Facebook, LinkedIn, etc.)
+	echo '<meta property="og:title" content="' . esc_attr( $title ) . '" />' . "\n";
+	echo '<meta property="og:url" content="' . esc_url( $url ) . '" />' . "\n";
+	echo '<meta property="og:locale" content="' . esc_attr( get_locale() ) . '" />' . "\n";
+	echo '<meta property="og:type" content="' . esc_attr( $type ) . '" />' . "\n";
+	echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '" />' . "\n";
+	if ( ! empty( $image_url ) ) {
+		echo '<meta property="og:image" content="' . esc_url( $image_url ) . '" />' . "\n";
+	}
 
+	// Balises Twitter Card
+	$twitter_handle = get_option( 'beriyack_seo_twitter_handle' );
+	echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+	if ( ! empty( $twitter_handle ) ) {
+		echo '<meta name="twitter:site" content="' . esc_attr( $twitter_handle ) . '" />' . "\n";
+	}
+	echo '<meta name="twitter:title" content="' . esc_attr( $title ) . '" />' . "\n";
+	if ( ! empty( $image_url ) ) {
+		echo '<meta name="twitter:image" content="' . esc_url( $image_url ) . '" />' . "\n";
+	}
+	if ( ! empty( $image_alt ) ) {
+		echo '<meta name="twitter:image:alt" content="' . esc_attr( $image_alt ) . '" />' . "\n";
+	}
+
+	// Balises dépendant de la description.
 	if ( ! empty( $description ) ) {
-		// Balises standard
-		echo '<meta name="author" content="' . esc_attr( $author_name ) . '" />' . "\n";
 		echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
-
-		// Balises Open Graph (Facebook, LinkedIn, etc.)
-		echo '<meta property="og:title" content="' . esc_attr( $title ) . '" />' . "\n";
 		echo '<meta property="og:description" content="' . esc_attr( $description ) . '" />' . "\n";
-		echo '<meta property="og:url" content="' . esc_url( $url ) . '" />' . "\n";
-		echo '<meta property="og:locale" content="' . esc_attr( get_locale() ) . '" />' . "\n";
-		echo '<meta property="og:type" content="' . esc_attr( $type ) . '" />' . "\n";
-		echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '" />' . "\n";
-		if ( ! empty( $image_url ) ) {
-			echo '<meta property="og:image" content="' . esc_url( $image_url ) . '" />' . "\n";
-		}
-
-		// Balises Twitter Card
-		$twitter_handle = get_option( 'beriyack_seo_twitter_handle' );
-		echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
-		if ( ! empty( $twitter_handle ) ) {
-			echo '<meta name="twitter:site" content="' . esc_attr( $twitter_handle ) . '" />' . "\n";
-		}
-		echo '<meta name="twitter:title" content="' . esc_attr( $title ) . '" />' . "\n";
 		echo '<meta name="twitter:description" content="' . esc_attr( $description ) . '" />' . "\n";
-		if ( ! empty( $image_url ) ) {
-			echo '<meta name="twitter:image" content="' . esc_url( $image_url ) . '" />' . "\n";
-		}
-		if ( ! empty( $image_alt ) ) {
-			echo '<meta name="twitter:image:alt" content="' . esc_attr( $image_alt ) . '" />' . "\n";
-		}
 	}
 }
 add_action( 'wp_head', 'beriyack_seo_add_meta_tags' );
