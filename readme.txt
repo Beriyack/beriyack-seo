@@ -9,77 +9,77 @@ Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Plugin SEO léger pour gérer les balises meta, l'intégration du sitemap et les directives d'indexation pour un meilleur référencement.
+A lightweight SEO plugin to manage meta tags, sitemap integration, and indexing directives for better SEO.
 
 == Description ==
 
-**Beriyack SEO** est un plugin WordPress simple et efficace conçu pour optimiser les aspects techniques essentiels de votre référencement naturel (SEO). Il se concentre sur trois piliers fondamentaux sans surcharger votre site :
+**Beriyack SEO** is a simple and effective WordPress plugin designed to optimize the essential technical aspects of your search engine optimization (SEO). It focuses on three fundamental pillars without overloading your site:
 
-*   **Gestion des balises Meta** : Ajoute automatiquement les balises `meta description`, les balises Open Graph (pour Facebook, LinkedIn...) et les Twitter Cards pour améliorer l'apparence de vos partages sur les réseaux sociaux.
-*   **Intégration du Sitemap** : Déclare automatiquement l'emplacement de votre sitemap natif WordPress dans le fichier `robots.txt` virtuel, aidant les moteurs de recherche à découvrir votre contenu plus efficacement.
-*   **Directives d'indexation** : Empêche l'indexation des pages de résultats de recherche et des pages 404, qui sont considérées comme du contenu de faible qualité par les moteurs de recherche, en ajoutant les directives `noindex, nofollow`.
+*   **Meta Tag Management**: Automatically adds `meta description` tags, Open Graph tags (for Facebook, LinkedIn, etc.), and Twitter Cards to improve the appearance of your shares on social media.
+*   **Sitemap Integration**: Automatically declares the location of your native WordPress sitemap in the virtual `robots.txt` file, helping search engines discover your content more efficiently.
+*   **Indexing Directives**: Prevents the indexing of search result pages and 404 pages, which are considered low-quality content by search engines, by adding `noindex, nofollow` directives.
 
-Ce plugin est idéal pour les propriétaires de sites qui souhaitent une solution légère pour couvrir les bases du SEO technique sans avoir besoin des fonctionnalités complexes des plus grosses suites SEO.
+This plugin is ideal for site owners who want a lightweight solution to cover the basics of technical SEO without needing the complex features of larger SEO suites.
 
 == Installation ==
 
-1.  Dans votre tableau de bord WordPress, allez dans `Extensions > Ajouter`.
-2.  Recherchez "Beriyack SEO".
-3.  Cliquez sur `Installer maintenant` puis sur `Activer`.
-4.  (Optionnel mais recommandé) Allez dans `Réglages > Beriyack SEO` pour définir une image par défaut.
+1.  In your WordPress dashboard, go to `Plugins > Add New`.
+2.  Search for "Beriyack SEO".
+3.  Click `Install Now` and then `Activate`.
+4.  (Optional but recommended) Go to `Settings > Beriyack SEO` to set a default image.
 
-Vous pouvez également installer le plugin manuellement en téléversant le dossier du plugin dans le répertoire `/wp-content/plugins/`.
+You can also install the plugin manually by uploading the plugin folder to the `/wp-content/plugins/` directory.
 
 == Frequently Asked Questions ==
 
-= Comment fonctionne la gestion de l'image pour les réseaux sociaux ? =
+= How does image management for social media work? =
 
-Le plugin suit une logique simple : pour un article ou une page, il utilise l'**image mise en avant**. Si aucune image mise en avant n'est définie, ou pour toute autre page (accueil, archives...), il utilisera l'**image par défaut** que vous pouvez configurer dans la page de réglages du plugin (`Réglages > Beriyack SEO`).
+The plugin follows a simple logic: for a post or page, it uses the **featured image**. If no featured image is set, or for any other page (homepage, archives, etc.), it will use the **default image** that you can configure in the plugin's settings page (`Settings > Beriyack SEO`).
 
-= Ce plugin remplace-t-il Yoast SEO ou Rank Math ? =
+= Does this plugin replace Yoast SEO or Rank Math? =
 
-Non. Beriyack SEO est conçu pour être une solution très légère qui gère quelques optimisations techniques spécifiques. Il ne propose pas d'analyse de contenu, de gestion de mots-clés ou d'autres fonctionnalités avancées présentes dans les suites SEO complètes.
+No. Beriyack SEO is designed to be a very lightweight solution that handles a few specific technical optimizations. It does not offer content analysis, keyword management, or other advanced features found in comprehensive SEO suites.
 
-= Comment le plugin gère-t-il le nom de l'auteur et le pseudo Twitter ? =
+= How does the plugin handle the author's name and Twitter handle? =
 
-La balise `meta name="author"` utilise le nom d'affichage de l'auteur de l'article. Sur les autres pages, elle utilise le nom du site. La balise `twitter:site` utilise le pseudo que vous pouvez renseigner dans la page de réglages du plugin. Si le champ est laissé vide, la balise n'est pas ajoutée.
+The `meta name="author"` tag uses the display name of the post's author. On other pages, it uses the site name. The `twitter:site` tag uses the handle you can enter in the plugin's settings page. If the field is left empty, the tag is not added.
 
-= Puis-je personnaliser l'image Open Graph par défaut ? =
+= Can I customize the default Open Graph image? =
 
-Oui. Vous pouvez téléverser une image par défaut directement depuis l'administration de WordPress, en allant dans le menu `Réglages > Beriyack SEO`. Cette approche rend le plugin indépendant de votre thème.
+Yes. You can upload a default image directly from the WordPress admin, by going to the `Settings > Beriyack SEO` menu. This approach makes the plugin independent of your theme.
 
 == Confidentialité ==
 
-Ce plugin ne collecte et ne stocke aucune donnée personnelle des visiteurs de votre site. Toutes les informations gérées par ce plugin sont récupérées depuis votre base de données WordPress existante ou configurées par l'administrateur du site.
+This plugin does not collect or store any personal data from your site's visitors. All information managed by this plugin is retrieved from your existing WordPress database or configured by the site administrator.
 
 == Screenshots ==
 
-1. La page de réglages simple et claire du plugin.
+1. The simple and clear settings page of the plugin.
 
 == Changelog ==
 
 = 1.1.0 =
-* Amélioration : La logique de génération de la description est maintenant plus robuste et couvre tous les cas (pages vides, archives sans description, etc.).
-* Amélioration : Simplification du code en utilisant `get_the_excerpt()` pour la description des articles.
-* Correction : Le bouton de téléversement d'image dans les réglages fonctionne désormais correctement.
-* Correction : Les balises meta s'affichent maintenant de manière fiable, même si certaines informations (comme le slogan) sont manquantes.
-* Correction : La balise `author` est maintenant indépendante de la balise `description`.
-* Correction : Le HTML est correctement retiré des descriptions de catégories.
-* Correction : Utilisation de la syntaxe moderne pour `term_description()` afin de supprimer l'avertissement de paramètre déprécié.
+* Improvement: The description generation logic is now more robust and covers all cases (empty pages, archives without descriptions, etc.).
+* Improvement: Code simplification by using `get_the_excerpt()` for post descriptions.
+* Fix: The image upload button in the settings now works correctly.
+* Fix: Meta tags are now displayed reliably, even if some information (like the tagline) is missing.
+* Fix: The `author` tag is now independent of the `description` tag.
+* Fix: HTML is correctly stripped from category descriptions.
+* Fix: Use of modern syntax for `term_description()` to remove the deprecated parameter warning.
 
 = 1.0.2 =
-* Sécurité : Renforcement de la sanitization de `$_SERVER['REQUEST_URI']` pour satisfaire l'analyse statique.
+* Security: Strengthened sanitization of `$_SERVER['REQUEST_URI']` to satisfy static analysis.
 
 = 1.0.1 =
-* Correction : Résolution des avertissements et erreurs du Plugin Check de WordPress.org (sécurité, standards de code, nombre de tags).
+* Fix: Resolved warnings and errors from the WordPress.org Plugin Check (security, code standards, number of tags).
 
 = 1.0.0 =
-* Lancement initial du plugin.
-* Ajout des balises meta (description, Open Graph, Twitter Cards).
-* Ajout du sitemap au fichier robots.txt.
-* Ajout des directives noindex/nofollow pour les pages de recherche et 404.
+* Initial release of the plugin.
+* Added meta tags (description, Open Graph, Twitter Cards).
+* Added sitemap to robots.txt file.
+* Added noindex/nofollow directives for search and 404 pages.
 
 == Upgrade Notice ==
 
 = 1.0.0 =
-Ceci est la première version du plugin. Aucune mise à jour nécessaire.
+This is the first version of the plugin. No upgrade is necessary.

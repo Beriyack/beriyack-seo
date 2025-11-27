@@ -1,50 +1,52 @@
 # beriyack-seo
 
-**Beriyack SEO** est un plugin WordPress simple, léger et efficace conçu pour optimiser les aspects techniques essentiels de votre référencement naturel (SEO) sans surcharger votre site.
+🇫🇷 [Voir la version en français](./README.fr.md)
 
-## Fonctionnalités
+**Beriyack SEO** is a simple, lightweight, and effective WordPress plugin designed to optimize the essential technical aspects of your search engine optimization (SEO) without overloading your site.
 
-Ce plugin se concentre sur trois piliers fondamentaux du SEO technique :
+## Features
 
-*   **🚀 Gestion des balises Meta** : Ajoute automatiquement les balises `meta description`, les balises Open Graph (pour Facebook, LinkedIn...) et les Twitter Cards pour améliorer l'apparence de vos partages sur les réseaux sociaux.
-*   **🗺️ Intégration du Sitemap** : Déclare automatiquement l'emplacement de votre sitemap natif WordPress dans le fichier `robots.txt` virtuel, aidant les moteurs de recherche à découvrir votre contenu plus efficacement.
-*   **🚦 Directives d'indexation** : Empêche l'indexation des pages de résultats de recherche et des pages 404 en ajoutant les directives `noindex, nofollow`, ce qui évite le contenu dupliqué ou de faible qualité.
+This plugin focuses on three fundamental pillars of technical SEO:
+
+*   **🚀 Meta Tag Management**: Automatically adds `meta description` tags, Open Graph tags (for Facebook, LinkedIn, etc.), and Twitter Cards to improve the appearance of your shares on social media.
+*   **🗺️ Sitemap Integration**: Automatically declares the location of your native WordPress sitemap in the virtual `robots.txt` file, helping search engines discover your content more efficiently.
+*   **🚦 Indexing Directives**: Prevents the indexing of search result pages and 404 pages by adding `noindex, nofollow` directives, which avoids duplicate or low-quality content.
 
 ## Installation
 
-### Depuis le répertoire WordPress.org (méthode recommandée)
+### From the WordPress.org directory (recommended method)
 
-1.  Dans votre tableau de bord WordPress, allez dans `Extensions > Ajouter`.
-2.  Recherchez "Beriyack SEO".
-3.  Cliquez sur `Installer maintenant` puis sur `Activer`.
+1.  In your WordPress dashboard, go to `Plugins > Add New`.
+2.  Search for "Beriyack SEO".
+3.  Click `Install Now` and then `Activate`.
 
-### Manuellement
+### Manually
 
-1.  Téléchargez la dernière version depuis la page Releases de ce dépôt.
-2.  Dans votre tableau de bord WordPress, allez dans `Extensions > Ajouter` et cliquez sur `Téléverser une extension`. Choisissez le fichier `.zip` que vous venez de télécharger et activez l'extension.
+1.  Download the latest version from the Releases page of this repository.
+2.  In your WordPress dashboard, go to `Plugins > Add New` and click `Upload Plugin`. Choose the `.zip` file you just downloaded and activate the plugin.
 
 ## Configuration
 
-Après l'activation, il est fortement recommandé de configurer une image par défaut.
+After activation, it is highly recommended to configure a default image.
 
-1.  Allez dans `Réglages > Beriyack SEO`.
-2.  Téléversez une image qui sera utilisée comme image de partage par défaut sur les réseaux sociaux. Cette image est utilisée pour votre page d'accueil, vos archives, et pour tout article ou page qui n'a pas d'« Image mise en avant ».
+1.  Go to `Settings > Beriyack SEO`.
+2.  Upload an image that will be used as the default sharing image on social media. This image is used for your homepage, archives, and for any post or page that does not have a "Featured Image".
 
-### Logique de l'image Open Graph
+### Open Graph Image Logic
 
-Le plugin utilise une approche hiérarchique pour choisir la meilleure image :
-1.  **Image mise en avant** : Si un article/page en possède une, elle sera utilisée en priorité.
-2.  **Image par défaut** : Sinon, l'image que vous avez définie dans les réglages du plugin sera utilisée.
+The plugin uses a hierarchical approach to choose the best image:
+1.  **Featured Image**: If a post/page has one, it will be used first.
+2.  **Default Image**: Otherwise, the image you have set in the plugin's settings will be used.
 
 ## Support
 
-Pour toute question relative à l'utilisation du plugin, veuillez utiliser le [forum de support sur WordPress.org](https://wordpress.org/support/plugin/beriyack-seo).
+For any questions regarding the use of the plugin, please use the support forum on WordPress.org.
 
-Si vous pensez avoir trouvé un bug ou si vous avez une suggestion d'amélioration, n'hésitez pas à ouvrir une [issue sur GitHub](https://github.com/Beriyack/beriyack-seo/issues).
+If you think you have found a bug or have a suggestion for improvement, feel free to open an issue on GitHub.
 
-## Confidentialité des données (RGPD/LPD)
+## Data Privacy (GDPR)
 
-**Beriyack SEO** est respectueux de la vie privée.
+**Beriyack SEO** is privacy-friendly.
 
-*   Ce plugin ne collecte, ne suit et ne stocke aucune donnée personnelle des visiteurs de votre site.
-*   Il ne place aucun cookie sur le navigateur des utilisateurs.
+*   This plugin does not collect, track, or store any personal data from your site's visitors.
+*   It does not place any cookies on users' browsers.
