@@ -1,10 +1,9 @@
 === Beriyack SEO ===
 Contributors: beriyack
-Donate link: https://www.buymeacoffee.com/beriyack
 Tags: seo, meta, open graph, sitemap, robots
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.1.0
+Stable tag: 1.1.2
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -48,7 +47,7 @@ The `meta name="author"` tag uses the display name of the post's author. On othe
 
 Yes. You can upload a default image directly from the WordPress admin, by going to the `Settings > Beriyack SEO` menu. This approach makes the plugin independent of your theme.
 
-== Confidentialité ==
+== Privacy ==
 
 This plugin does not collect or store any personal data from your site's visitors. All information managed by this plugin is retrieved from your existing WordPress database or configured by the site administrator.
 
@@ -57,6 +56,9 @@ This plugin does not collect or store any personal data from your site's visitor
 1. The simple and clear settings page of the plugin.
 
 == Changelog ==
+
+= 1.1.2 =
+* Feature: Added a "Settings" link on the plugins page for easier access.
 
 = 1.1.0 =
 * Improvement: The description generation logic is now more robust and covers all cases (empty pages, archives without descriptions, etc.).

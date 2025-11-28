@@ -1,6 +1,6 @@
 # beriyack-seo
 
-🇫🇷 [Voir la version en français](./README.fr.md)
+🇫🇷 [Voir la version en français](./README-fr_FR.md)
 
 **Beriyack SEO** is a simple, lightweight, and effective WordPress plugin designed to optimize the essential technical aspects of your search engine optimization (SEO) without overloading your site.
 

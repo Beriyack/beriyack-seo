@@ -1,10 +1,9 @@
 === Beriyack SEO ===
 Contributors: beriyack
-Donate link: https://www.buymeacoffee.com/beriyack
 Tags: seo, meta, open graph, sitemap, robots
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.1.0
+Stable tag: 1.1.2
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -57,6 +56,9 @@ Ce plugin ne collecte et ne stocke aucune donnée personnelle des visiteurs de v
 1. La page de réglages simple et claire du plugin.
 
 == Changelog ==
+
+= 1.1.2 =
+* Ajout d'un lien "Réglages" sur la page des plugins pour un accès plus facile.
 
 = 1.1.0 =
 * Amélioration : La logique de génération de la description est maintenant plus robuste et couvre tous les cas (pages vides, archives sans description, etc.).

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Beriyack SEO
  * Description:       Plugin SEO de base pour le site Beriyack. Gère les optimisations techniques : balises meta, intégration du sitemap et directives d'indexation.
- * Version:           1.1.0
+ * Version:           1.1.2
  * Plugin URI:        https://github.com/Beriyack/beriyack-seo
  * Author:            Beriyack
  * Author URI:        https://x.com/Beriyack
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Définit la version du plugin comme une constante pour une utilisation centralisée.
-define( 'BERIYACK_SEO_VERSION', '1.1.0' );
+define( 'BERIYACK_SEO_VERSION', '1.1.2' );
 
 // Initialise les réglages du plugin.
 require_once plugin_dir_path( __FILE__ ) . 'includes/settings.php';
